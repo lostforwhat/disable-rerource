@@ -3,6 +3,7 @@ local PLACE_MASK = GLOBAL.PLACE_MASK
 
 local Layouts = GLOBAL.require("map/layouts").Layouts
 local StaticLayout = GLOBAL.require("map/static_layout")
+--local StaticLayout2 = GLOBAL.require("map/static_layout2")
 
 Layouts["moontrees_2"] = StaticLayout.Get("map/static_layouts/moontrees_2", {
 		areas =
@@ -43,6 +44,14 @@ Layouts["retrofit_moonisland_large"] = StaticLayout.Get("map/static_layouts/retr
 		},
 	})
 
+Layouts["HermitcrabIsland"] = StaticLayout.Get("map/static_layouts/hermitcrab_01",
+	{
+		add_topology = {room_id = "StaticLayoutIsland:HermitcrabIsland", tags = {"RoadPoison", "nohunt", "nohasslers", "not_mainland"}},
+		min_dist_from_land = 0,
+	})
+Layouts["BathbombedHotspring"] = StaticLayout.Get("map/static_layouts/bathbombedhotspring")
+Layouts["MoonTreeHiddenAxe"] = StaticLayout.Get("map/static_layouts/moontreehiddenaxe")
+
 local disabled_moon = {
 	bullkelp_beachedroot = true,
 	driftwood_log = true,
@@ -71,7 +80,7 @@ local disabled_moon = {
 
 local function moonislandClear(room)
 	--room.contents = {}
-	print("--clearing room--")
+	--print("--clearing room--")
 	local contents = room.contents or {}
 	local distributeprefabs = contents.distributeprefabs or {}
 	for k,v in pairs(distributeprefabs) do
